@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letras y Páginas</title>
+    <link rel="stylesheet" href="./client/css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  </head>
+  <body>
+    <div class="app-container">
+      <div class="sidebar">
+        <div class="logo">
+          <i class="fas fa-book-open"></i>
+          <h2>Letras y Páginas</h2>
+        </div>
+        <nav class="nav-menu">
+          <div class="nav-item tab active" data-target="books">
+            <i class="fas fa-book"></i>
+            <span>Libros</span>
+          </div>
+          <div class="nav-item tab" data-target="categories">
+            <i class="fas fa-tags"></i>
+            <span>Categorías</span>
+          </div>
+        </nav>
+      </div>
+
+      <main class="main-content">
+        <header class="top-bar">
+          <h1>Gestión de Biblioteca Digital</h1>
+        </header>
+
+        <div id="books" class="content-panel active">
+          <div class="panel-grid">
+            <div class="card form-card">
+              <div class="card-header">
+                <h2><i class="fas fa-plus-circle"></i> Añadir Nuevo Libro</h2>
+              </div>
+              <div class="card-body">
+                <form class="form-group">
+                  <div class="input-group">
+                    <label for="bookTitle">Título</label>
+                    <input type="text" id="bookTitle" placeholder="Título del libro" />
+                  </div>
+                  <div class="input-group">
+                    <label for="bookAuthor">Autor</label>
+                    <input type="text" id="bookAuthor" placeholder="Nombre del autor" />
+                  </div>
+                  <div class="input-group">
+                    <label for="bookISBN">ISBN</label>
+                    <input type="text" id="bookISBN" placeholder="Código ISBN" />
+                  </div>
+                  <div class="form-row">
+                    <div class="input-group">
+                      <label for="bookPrice">Precio (€)</label>
+                      <input type="number" id="bookPrice" placeholder="0.00" step="0.01" />
+                    </div>
+                    <div class="input-group">
+                      <label for="bookStock">Existencias</label>
+                      <input type="number" id="bookStock" placeholder="0" />
+                    </div>
+                  </div>
+                  <div class="input-group">
+                    <label for="bookCategory">Categoría</label>
+                    <select id="bookCategory">
+                      <option value="">Seleccionar Categoría</option>
+                      <option value="1">Novela</option>
+                      <option value="2">Historia</option>
+                      <option value="3">Ciencia</option>
+                      <option value="4">Informática</option>
+                      <option value="5">Biografía</option>
+                    </select>
+                  </div>
+                  <button type="button" class="btn btn-primary" onclick="addBook()">
+                    <i class="fas fa-save"></i> Guardar Libro
+                  </button>
+                </form>
+              </div>
+            </div>
+
+            <div class="card list-card">
+              <div class="card-header">
+                <h2><i class="fas fa-list"></i> Catálogo de Libros</h2>
+                <div class="search-container">
+                  <i class="fas fa-search search-icon"></i>
+                  <input type="text" id="bookSearch" placeholder="Buscar por título" oninput="filterBooks()" />
+                </div>
+              </div>
+              <div class="card-body">
+                <div id="bookList" class="list-container"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="categories" class="content-panel">
+          <div class="panel-grid">
+            <div class="card form-card">
+              <div class="card-header">
+                <h2><i class="fas fa-folder-plus"></i> Nueva Categoría</h2>
+              </div>
+              <div class="card-body">
+                <form class="form-group">
+                  <div class="input-group">
+                    <label for="categoryName">Nombre de la Categoría</label>
+                    <input type="text" id="categoryName" placeholder="Nombre de la categoría" />
+                  </div>
+                  <button type="button" class="btn btn-primary" onclick="addCategory()">
+                    <i class="fas fa-save"></i> Guardar Categoría
+                  </button>
+                </form>
+              </div>
+            </div>
+
+            <div class="card list-card">
+              <div class="card-header">
+                <h2><i class="fas fa-tags"></i> Categorías Disponibles</h2>
+              </div>
+              <div class="card-body">
+                <div id="categoryList" class="list-container"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="./client/js/script.js"></script>
+  </body>
+</html>
